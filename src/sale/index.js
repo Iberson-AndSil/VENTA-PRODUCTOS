@@ -1,7 +1,7 @@
 const express = require("express")
 const productService = require("./service/productService");
 const customerService = require("./service/customerService");
-const uri = 'mongodb+srv://henry23tc:Passw0rd2321@supermarket.j5o9kwd.mongodb.net/'
+const uri = 'mongodb+srv://henry23tc:Passw0rd@supermarket.j5o9kwd.mongodb.net/'
 
 const mongoose = require('mongoose');
 mongoose.connect(uri);

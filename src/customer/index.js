@@ -1,13 +1,13 @@
 const express = require("express")
 //const personService = require("./services/personService");
-const uri = 'mongodb+srv://henry23tc:Passw0rd2321@supermarket.j5o9kwd.mongodb.net/'
+const uri = 'mongodb+srv://henry23tc:Passw0rd@supermarket.j5o9kwd.mongodb.net/'
 
 const mongoose = require('mongoose');
 mongoose.connect(uri);
 const app = express()
 app.use( express.json() )
 const port = 8080
-const { customerModel } = require('./src/models');
+const { customerModel } = require('./models');
 app.get('/', (req, res) => { res.send("DATOS DE CLIENTE"); })
 
 //Listar Todos los Clientes

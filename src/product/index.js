@@ -1,5 +1,5 @@
 const express = require("express")
-const uri = 'mongodb+srv://henry23tc:Passw0rd2321@supermarket.j5o9kwd.mongodb.net/'
+const uri = 'mongodb+srv://henry23tc:Passw0rd@supermarket.j5o9kwd.mongodb.net/'
 
 const mongoose = require('mongoose');
 mongoose.connect(uri);
@@ -13,8 +13,8 @@ app.get('/product', async(req, res)=>{
   const product = await productModel.find({});
   res.json( product );
 });
-app.get('/product/:dni', async(req, res)=>{
-  const produc = await productModel.find({dni:req.params.dni});
+app.get('/product/:codeProduct', async(req, res)=>{
+  const produc = await productModel.find({codeProduct:req.params.codeProduct});
   res.json( produc );
 });
 app.post('/product', async(req, res)=>{

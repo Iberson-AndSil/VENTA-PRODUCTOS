@@ -1,0 +1,29 @@
+services:
+  product:
+    build:
+      context: ./src/product
+      dockerfile: Dockerfile
+    container_name: product
+    restart: unless-stopped
+    ports:
+      - "80:8080"
+  
+  customer:
+    build:
+      context: ./src/costumer
+      dockerfile: Dockerfile
+
+    container_name: customer
+    restart: unless-stopped
+    ports:
+      - "81:8080"
+
+  sale:
+    build:
+      context: ./src/sale
+      dockerfile: Dockerfile
+
+    container_name: sale
+    restart: unless-stopped
+    ports:
+      - "82:8080"

@@ -11,8 +11,8 @@ app.get('/', (req, res) => { res.send("DATOS DE CLIENTE"); })
 
 //Listar Todos los Clientes
 app.get('/customer', async(req, res)=>{
-  const list = await customerModel.find({});
-  res.json( list );
+  const client = await customerModel.find({});
+  res.json( client );
 });
 //Listar Cliente por DNI
 app.get('/customer/:dni', async(req, res)=>{

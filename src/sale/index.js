@@ -21,12 +21,12 @@ app.get('/sale/:code', async(req, res)=>{
 });
 app.post('/sale', async(req, res)=>{
   try {
-    const {code, codeProduct, dni, date, monto} = req.body;
-    const product= await productService.get(codeProduct);
-    const dniCustomer=await customerService.get(dni);
-    if(!product ) throw ("VENTA NO PROCEDE");
-    if(!dniCustomer ) throw ("VENTA NO PROCEDE");
-    const sale = new saleModel({code, codeProduct, dni, date, monto });
+    const {code, products, buyer, date, monto} = req.body;
+    const ofProduct= await productService.get(products);
+    const ofCustomer=await customerService.get(buyer);
+    if(! ofProduct) throw ("VENTA NO PROCEDE");
+    if(! ofCustomer) throw ("VENTA NO PROCEDE");
+    const sale = new saleModel({code, products, buyer, date, monto });
     const data = await sale.save();
     return res.status(201).json(data);
   } catch (error) {

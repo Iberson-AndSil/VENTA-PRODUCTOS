@@ -11,22 +11,22 @@ const port = 8080
 const { saleModel } = require('./models');
 app.get('/', (req, res) => { res.send("DATOS DE VENTAS"); })
 
-app.get('sales', async(req, res)=>{
+app.get('/sale', async(req, res)=>{
   const list = await saleModel.find({});
   res.json( list );
 });
-app.get('sales/:code', async(req, res)=>{
+app.get('/sale/:code', async(req, res)=>{
   const code = await saleModel.find({code:req.params.code});
   res.json( code );
 });
-app.post('sales', async(req, res)=>{
+app.post('/sale', async(req, res)=>{
   try {
-    const {code, codeProduct, customer, date, monto} = req.body;
-    const product=productService.get(productCode);
-    const dni=customerService.get(dni);
+    const {code, codeProduct, dni, date, monto} = req.body;
+    const product=productService.get(codeProduct);
+    const dniCustomer=customerService.get(dni);
     if(!product ) throw ("VENTA NO PROCEDE");
-    if(!dni ) throw ("VENTA NO PROCEDE");
-    const sale = new saleModel({code, codeProduct, customer, date, monto });
+    if(!dniCustomer ) throw ("VENTA NO PROCEDE");
+    const sale = new saleModel({code, codeProduct, dni, date, monto });
     const data = await sale.save();
     return res.status(201).json(data);
   } catch (error) {

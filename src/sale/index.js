@@ -23,7 +23,9 @@ app.post('/sale', async(req, res)=>{
   try {
     const {code, products, buyer, date, monto} = req.body;
     const ofProduct= await productService.get(products);
+    console.log(ofProduct);
     const ofCustomer=await customerService.get(buyer);
+    console.log(ofCustomer);
     if(! ofProduct) throw ("VENTA NO PROCEDE");
     if(! ofCustomer) throw ("VENTA NO PROCEDE");
     const sale = new saleModel({code, products, buyer, date, monto });

@@ -11,14 +11,14 @@ app.get('/', (req, res) => { res.send("I am alive product"); })
 
 // ver u obtener producto
 app.get('/product', async(req, res)=>{
-  const product = await productModel.find({});
-  res.json( product );
+  const list = await productModel.find({});
+  res.json( list );
 });
 
-// ver u obtener producto por DNI
+// ver u obtener producto por codigo
 app.get('/product/:codeProduct', async(req, res)=>{
-  const produc = await productModel.find({dni:req.params.dni});
-  res.json( produc );
+  const code = await productModel.find({codeProduct:req.params.codeProduct});
+  res.json( code );
 });
 
 // crear producto

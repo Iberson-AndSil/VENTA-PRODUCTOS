@@ -1,5 +1,4 @@
 const express = require("express")
-//const personService = require("./services/personService");
 const uri = 'mongodb+srv://henry23tc:Passw0rd@supermarket.j5o9kwd.mongodb.net/'
 
 const mongoose = require('mongoose');
@@ -12,13 +11,13 @@ app.get('/', (req, res) => { res.send("DATOS DE CLIENTE"); })
 
 //Listar Todos los Clientes
 app.get('/customer', async(req, res)=>{
-  const customer = await customerModel.find({});
-  res.json( customer );
+  const list = await customerModel.find({});
+  res.json( list );
 });
 //Listar Cliente por DNI
 app.get('/customer/:dni', async(req, res)=>{
-  const customer = await customerModel.find({code:req.params.code});
-  res.json( customer[0] );
+  const person = await customerModel.find({dni:req.params.dni});
+  res.json( person);
 });
 //Crear Cliente
 app.post('/customer', async(req, res)=>{

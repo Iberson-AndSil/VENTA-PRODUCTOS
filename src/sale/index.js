@@ -22,8 +22,8 @@ app.get('/sale/:code', async(req, res)=>{
 app.post('/sale', async(req, res)=>{
   try {
     const {code, codeProduct, dni, date, monto} = req.body;
-    const product=productService.get(codeProduct);
-    const dniCustomer=customerService.get(dni);
+    const product= await productService.get(codeProduct);
+    const dniCustomer=await customerService.get(dni);
     if(!product ) throw ("VENTA NO PROCEDE");
     if(!dniCustomer ) throw ("VENTA NO PROCEDE");
     const sale = new saleModel({code, codeProduct, dni, date, monto });
